@@ -1,34 +1,19 @@
-let button = document.getElementsByClassName('btn_partners'),
-    tabContent = document.getElementsByClassName('info');
-button[0].classList.add('active');
-    
-    tabContent[0].style.display = 'block';
+let button = document.getElementsByClassName("btn_partners"),
+    tabContent = document.getElementsByClassName("info");
 
-function tabs(e, tab) {
-    let i;
-    for (i = 0; i < button.length; i++) {
-        tabContent[i].style.display = 'none';
-        button[i].classList.remove('active');
-    }
-    document.getElementById(tab).style.display = 'block';
-    e.currentTarget.classList.add('active');
+function tabs(b, c) {
+    let a;
+    for (a = 0; a < button.length; a++) tabContent[a].style.display = "none", button[a].classList.remove("active");
+    document.getElementById(c).style.display = "block", b.currentTarget.classList.add("active")
 }
+button[0].classList.add("active"), tabContent[0].style.display = "block";
+let selectTeam = document.getElementsByClassName("team");
+selectTeam[0].classList.add("active");
+let sliderTeam = document.getElementsByClassName("swiper");
 
-let selectTeam = document.getElementsByClassName('team')
-    selectTeam[0].classList.add('active');
-let sliderTeam = document.getElementsByClassName('swiper')
-    sliderTeam[0].style.display = 'block';
-
-function team(e, numberTeam) {
-    let i;
-    for (i = 0; i < selectTeam.length; i++) {
-        sliderTeam[i].style.display = 'none';
-        selectTeam[i].classList.remove('active');
-    }
-    document.getElementById(numberTeam).style.display = 'block';
-    e.currentTarget.classList.add('active');
+function team(b, c) {
+    let a;
+    for (a = 0; a < selectTeam.length; a++) sliderTeam[a].style.display = "none", selectTeam[a].classList.remove("active");
+    document.getElementById(c).style.display = "block", b.currentTarget.classList.add("active")
 }
-
-
-
-
+sliderTeam[0].style.display = "block"
