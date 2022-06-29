@@ -65,7 +65,9 @@ header {
 
 .logo {
     justify-content: flex-start;
-    align-items: center
+    align-items: center;
+    position: relative;
+    z-index: +2;
 }
 
 .logo_name {
@@ -83,7 +85,8 @@ nav ul {
     list-style-type: none
 }
 
-nav ul li a {
+nav ul li a,
+.menu__box li a {
     font-weight: 400;
     font-size: 16px;
     line-height: 18px;
@@ -93,10 +96,164 @@ nav ul li a {
     transition: .3s
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+.menu__box li a:hover {
     text-decoration-line: underline;
     transition: .3s
 }
+
+.button_container {
+    display: none;
+    position: fixed;
+    top: 29px;
+    right: 24px;
+    height: 22px;
+    width: 24px;
+    cursor: pointer;
+    z-index: 100;
+    transition: opacity 0.25s ease;
+  }
+  .button_container:hover {
+    opacity: 0.7;
+  }
+  .button_container.active .top {
+    transform: translateY(5px) translateX(0) rotate(45deg);
+    background: #FFF;
+  }
+  .button_container.active .middle {
+    opacity: 0;
+    background: #FFF;
+  }
+  .button_container.active .bottom {
+    transform: translateY(-9px) translateX(0) rotate(-45deg);
+    background: #FFF;
+  }
+  .button_container span {
+    background: #fff;
+    border: none;
+    height: 2.6px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.35s ease;
+    cursor: pointer;
+  }
+  .button_container span:nth-of-type(2) {
+    top: 7px;
+  }
+  .button_container span:nth-of-type(3) {
+    top: 14px;
+  }
+  
+  .overlay {
+    position: fixed;
+    z-index: +1;
+    background: linear-gradient(104.93deg, rgba(122, 122, 122, 0.1) 1.86%, rgba(122, 122, 122, 0) 104.73%);
+filter: drop-shadow(0px 4px 4px rgba(50, 50, 50, 0.15));
+backdrop-filter: blur(100px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s, visibility 0.35s, height 0.35s;
+    overflow: hidden;
+  }
+  .overlay.open {
+    opacity: 1;
+    visibility: visible;
+    height: 100%;
+  }
+  .overlay.open li {
+    animation: fadeInRight 0.5s ease forwards;
+    animation-delay: 0.35s;
+  }
+  .overlay.open li:nth-of-type(2) {
+    animation-delay: 0.4s;
+  }
+  .overlay.open li:nth-of-type(3) {
+    animation-delay: 0.45s;
+  }
+  .overlay.open li:nth-of-type(4) {
+    animation-delay: 0.5s;
+  }
+  .overlay nav {
+    position: relative;
+    top: 128px;
+    padding: 0 20px;
+  }
+  .overlay ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+  }
+  .overlay ul li {
+    display: block;
+    position: relative;
+    opacity: 0;
+  }
+  .overlay ul li a {
+    display: block;
+    position: relative;
+    color: #FFF;
+    text-decoration: none;
+    overflow: hidden;
+  }
+  .overlay ul li a:hover:after, .overlay ul li a:focus:after, .overlay ul li a:active:after {
+    width: 100%;
+  }
+  .overlay ul li a:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    transform: translateX(-50%);
+    height: 3px;
+    background: #FFF;
+    transition: 0.35s;
+  }
+  
+  @keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      left: 20%;
+    }
+    100% {
+      opacity: 1;
+      left: 0;
+    }
+  }
+
+  .footer_burger{
+    position: fixed;
+    bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .footer_burger .links_social{
+      margin-bottom: 25px;
+  }
+
+  .footer_burger .privacy{
+    font-weight: 300;
+font-size: 16px;
+line-height: 18px;
+
+color: #B1B1B1;
+  }
 
 main {
     margin: 163px auto;
@@ -711,4 +868,175 @@ footer .container {
     font-size: 18px;
     line-height: 21px;
     color: #b1b1b1
+}
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.63);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: .3s;
+}
+
+
+.modal-content {
+    max-width: 724px;
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 20px;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+
+}
+
+
+
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+
+.close {
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F8F8F8;
+    border: 1px solid #DEDEDE;
+    border-radius: 50%;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
+    transition: .3s;
+}
+
+.close:hover {
+    cursor: pointer;
+    transition: .3s;
+}
+
+.close img:hover {
+    transform: rotate(180deg);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.info_user {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.category_info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.category_info:first-child{
+    margin-top: 0;
+}
+
+.info_user_content .title {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: left;
+    color: #585858;
+    width: 82px;
+    margin-right: 20px;
+}
+
+.info_user_content .value_info {
+    padding: 7px 10px;
+    background: #F4F4F4;
+    border-radius: 7px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 23px;
+    color: #2C2C2C;
+}
+
+.links_to_social{
+    background: #F4F4F4;
+border-radius: 7px;
+margin-top: 21px;
+display: flex;
+gap: 12px;
+width: max-content;
+padding: 5px 10px;
+}
+
+.links_to_social a{
+text-decoration: none;
+width: 30px;
+height: 30px;
+display: flex;
+flex-direction: row;
+}
+
+.links_to_social img{
+    width: 100%;
+}
+
+.modal_description_user{
+    margin-top: 20px;
+    font-weight: 300;
+font-size: 20px;
+line-height: 29px;
+color: #3D3D3D;
+}
+
+@media screen and (max-width:768px) {
+    .button_container{
+        display: block;
+    }
+    .main_menu{
+        display: none;
+    }
+    header {
+        padding: 24px 20px;}
+        .logo_name{
+            font-size: 18px;
+            line-height: 23px;
+        }
+    .logo img{
+        height: 30px;
+    }
+    .overlay-menu ul li a{
+        font-weight: 700;
+font-size: 24px;
+line-height: 28px;
+/* identical to box height */
+
+text-transform: uppercase;
+
+color: #FFFFFF;
+    }
 }
