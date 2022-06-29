@@ -16,41 +16,24 @@ function team(b, c) {
     for (a = 0; a < selectTeam.length; a++) sliderTeam[a].style.display = "none", selectTeam[a].classList.remove("active");
     document.getElementById(c).style.display = "block", b.currentTarget.classList.add("active")
 }
-sliderTeam[0].style.display = "block"
-let toggle = document.querySelector("#toggle");
-let overlay = document.querySelector('#overlay')
-let body = document.querySelector('body')
-let modal = document.getElementById('myModal');
-
-let span = document.getElementsByClassName("close")[0];
-
+sliderTeam[0].style.display = "block";
+let toggle = document.querySelector("#toggle"),
+    overlay = document.querySelector("#overlay"),
+    body = document.querySelector("body"),
+    modal = document.getElementById("myModal"),
+    span = document.getElementsByClassName("close")[0];
 
 function showModal() {
-    modal.style.display = "flex";
-    modal.style.opacity = 1
-    body.classList.toggle("overflow")
+    modal.style.display = "flex", modal.style.opacity = 1, body.classList.toggle("overflow")
 }
 
 function hideModal() {
-    modal.style.display = "none";
-    body.classList.toggle("overflow")
+    modal.style.display = "none", body.classList.toggle("overflow")
 }
-
-span.onclick = function() {
-    modal.style.opacity = 0
-    setTimeout(hideModal, 400)
-}
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-
-
-toggle.onclick = function(){
-  toggle.classList.toggle("active");
-  overlay.classList.toggle("open")
-  body.classList.toggle("overflow")
+span.onclick = function () {
+    modal.style.opacity = 0, setTimeout(hideModal, 400)
+}, window.onclick = function (a) {
+    a.target == modal && (modal.style.display = "none")
+}, toggle.onclick = function () {
+    toggle.classList.toggle("active"), overlay.classList.toggle("open"), body.classList.toggle("overflow")
 }
