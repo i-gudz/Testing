@@ -45,8 +45,10 @@ window.onclick = function(event) {
 
 let toggle = document.querySelector("#toggle");
 let overlay = document.querySelector('#overlay')
+let body = document.querySelector('body')
 
 toggle.onclick = function(){
   toggle.classList.toggle("active");
   overlay.classList.toggle("open")
+  body.classList.toggle("overflow")
 }
