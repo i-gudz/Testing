@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="overflow">
+<body>
     <section class="main_page">
         <div class="button_container" id="toggle"><span class="top"></span><span class="middle"></span><span
                 class="bottom"></span></div>
@@ -160,15 +160,7 @@
     <section class="our_team">
         <h2>Our Team</h2> <img src="img/plus.svg" class="plus_first" alt="plus"> <img src="img/plus.svg"
             class="plus_second" alt="plus">
-        <div class="select_team">
-            <div class="team active" onclick="team(event, 'slider_team_first')"> <input type="radio"
-                    class="radio_btn_team" id="team_first" name="team" checked> <label for="team_first">Team 1</label>
-            </div>
-            <div class="team" onclick="team(event, 'slider_team_second')"> <input type="radio" class="radio_btn_team"
-                    id="team_second" name="team"> <label for="team_second">Team 2</label> </div>
-            <div class="team" onclick="team(event, 'slider_team_third')"> <input type="radio" class="radio_btn_team"
-                    id="team_third" name="team"> <label for="team_third">Team 3</label> </div>
-        </div>
+        
         <div class="our_team_content">
             <div class="about">
                 <h4>About</h4>
@@ -177,6 +169,15 @@
                 </p>
             </div>
             <div class="slider">
+                <div class="select_team">
+                    <div class="team active" onclick="team(event, 'slider_team_first')"> <input type="radio"
+                            class="radio_btn_team" id="team_first" name="team" checked> <label for="team_first">Team 1</label>
+                    </div>
+                    <div class="team" onclick="team(event, 'slider_team_second')"> <input type="radio" class="radio_btn_team"
+                            id="team_second" name="team"> <label for="team_second">Team 2</label> </div>
+                    <div class="team" onclick="team(event, 'slider_team_third')"> <input type="radio" class="radio_btn_team"
+                            id="team_third" name="team"> <label for="team_third">Team 3</label> </div>
+                </div>
                 <div class="swiper mySwiper" id="slider_team_first">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"><img src="img/user_first.jpeg" alt="">
@@ -437,7 +438,9 @@
     <script>
         let swiper = new Swiper(".mySwiper", {
             slidesPerView: "auto",
-            spaceBetween: 20,
+            initialSlide:1,
+            centeredSlides: "true",
+            spaceBetween: 10,
             pagination: {
                 el: ".swiper-pagination",
                 type: "progressbar",
@@ -445,7 +448,11 @@
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
-            }
+            },
+            breakpoints: {
+    769: {
+      spaceBetween: 20
+    }}
         });
     </script>
 </body>

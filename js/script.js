@@ -17,19 +17,23 @@ function team(b, c) {
     document.getElementById(c).style.display = "block", b.currentTarget.classList.add("active")
 }
 sliderTeam[0].style.display = "block"
+let toggle = document.querySelector("#toggle");
+let overlay = document.querySelector('#overlay')
+let body = document.querySelector('body')
+let modal = document.getElementById('myModal');
 
-var modal = document.getElementById('myModal');
-
-var span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close")[0];
 
 
 function showModal() {
     modal.style.display = "flex";
     modal.style.opacity = 1
+    body.classList.toggle("overflow")
 }
 
 function hideModal() {
     modal.style.display = "none";
+    body.classList.toggle("overflow")
 }
 
 span.onclick = function() {
@@ -43,9 +47,7 @@ window.onclick = function(event) {
     }
 }
 
-let toggle = document.querySelector("#toggle");
-let overlay = document.querySelector('#overlay')
-let body = document.querySelector('body')
+
 
 toggle.onclick = function(){
   toggle.classList.toggle("active");
